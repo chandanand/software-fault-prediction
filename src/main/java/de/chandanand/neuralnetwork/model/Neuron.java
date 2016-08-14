@@ -5,11 +5,18 @@ package de.chandanand.neuralnetwork.model;
  */
 public class Neuron {
 
-    private final int numWeights;
-    private final double[] weights;
+    public final int numWeights;
+    public final double[] weights;
+    public double output = 0;
 
-    Neuron(int numWeights) {
+    public Neuron(int numWeights) {
         this.numWeights = numWeights;
         this.weights = new double[this.numWeights];
+    }
+
+    public void calculateOutput(double[] input) {
+        for (int i = 0; i < numWeights; i++) {
+            output += weights[i] * input[i];
+        }
     }
 }

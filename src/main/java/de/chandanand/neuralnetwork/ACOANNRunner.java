@@ -16,6 +16,7 @@ public class ACOANNRunner {
         int numOutputs = 1;
         int numTrainCases = 210;
         int numTestCases = 20;
+        int repoSize = 20;
 
         String trainingFileName = "ant_dataset.dat";
         String testFileName = "ant_dataset_test.dat";
@@ -37,6 +38,17 @@ public class ACOANNRunner {
         nodesPerLayer[1] = numInputs;
         nodesPerLayer[2] = numOutputs;
         NeuralNetwork neuralNetwork = new NeuralNetwork(3, numInputs, nodesPerLayer);
-        
+        neuralNetwork.dataSet = trainData;
+
+        ACOFramework acoFramework = new ACOFramework(neuralNetwork, repoSize);
+
+        if (acoFramework.trainNeuralNet()) {
+            System.out.println("******Test Output*****");
+            neuralNetwork.dataSet = testData;
+            acoFramework.testNeuralNet();
+        }
+        else {
+            System.exit(0);
+        }
     }
 }

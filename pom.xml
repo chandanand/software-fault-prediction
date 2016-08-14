@@ -13,6 +13,14 @@
         using object oriented software metrics. The model is based on Artificial
         Neural Network trained with Ant Colony Optimization (ACO).</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.2</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
