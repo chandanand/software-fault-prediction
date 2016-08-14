@@ -1,6 +1,7 @@
 package de.chandanand.neuralnetwork;
 
 import de.chandanand.neuralnetwork.model.Data;
+import de.chandanand.neuralnetwork.model.NeuralNetwork;
 import de.chandanand.neuralnetwork.util.Utils;
 
 import java.io.BufferedReader;
@@ -31,13 +32,11 @@ public class ACOANNRunner {
         trainData.scaleDown();
         testData.scaleDown();
 
-        System.out.println("Scaled down test data:\n");
-        for (int i=0;i<numTrainCases;i++) {
-            for (int j=0;j<numInputs+numOutputs;j++)
-                System.out.print(trainData.data[i][j] + " ");
-            System.out.println("");
-        }
-        System.out.println("");
-        System.out.println("End: Test data:");
+        int[] nodesPerLayer = new int[3];
+        nodesPerLayer[0] = numInputs;
+        nodesPerLayer[1] = numInputs;
+        nodesPerLayer[2] = numOutputs;
+        NeuralNetwork neuralNetwork = new NeuralNetwork(3, numInputs, nodesPerLayer);
+        
     }
 }
