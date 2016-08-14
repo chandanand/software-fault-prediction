@@ -28,14 +28,16 @@ public class ACOANNRunner {
         Utils.parse(trainingFile, trainData);
         Utils.parse(testFile, testData);
 
-        System.out.println("************* Extrema values *************");
-        for (int i = 0; i < (trainData.numInputs + trainData.numOutputs); i++)
-            System.out.println(trainData.extrema[i][0] + " " + trainData.extrema[i][1]);
-        System.out.println("************* End *************");
+        trainData.scaleDown();
+        testData.scaleDown();
 
-        System.out.println("************* Extrema values *************");
-        for (int i = 0; i < (testData.numInputs + testData.numOutputs); i++)
-            System.out.println(testData.extrema[i][0] + " " + testData.extrema[i][1]);
-        System.out.println("************* End *************");
+        System.out.println("Scaled down test data:\n");
+        for (int i=0;i<numTrainCases;i++) {
+            for (int j=0;j<numInputs+numOutputs;j++)
+                System.out.print(trainData.data[i][j] + " ");
+            System.out.println("");
+        }
+        System.out.println("");
+        System.out.println("End: Test data:");
     }
 }

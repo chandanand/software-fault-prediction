@@ -24,7 +24,15 @@ public class Data {
             extrema[i][0] = 10000.0;
             extrema[i][1] = -10000.0;
         }
+    }
 
-
+    public void scaleDown() {
+        double[][] scaledDownInput = new double[numCases][numInputs+numOutputs];
+        for (int i = 0; i < numCases; i++)
+            for (int j = 0; j < (numInputs + numOutputs); j++) {
+                scaledDownInput[i][j] = .9*(data[i][j]-extrema[j][0])/
+                        (extrema[j][1]-extrema[j][0])+.05;
+            }
+        data = scaledDownInput;
     }
 }
